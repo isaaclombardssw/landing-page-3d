@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Lenis from 'lenis';
 import { Scene, AnimationConfig, PanelConfig } from './types';
@@ -26,7 +26,6 @@ export const PanelAnimation: React.FC<PanelAnimationProps> = ({
   children,
   scrollConfig = {},
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
   
   // Use our custom hooks with multi-scene support
   const { containerRef, progress, getCurrentSceneData } = useSceneManager(scenes, config);
@@ -88,17 +87,6 @@ export const PanelAnimation: React.FC<PanelAnimationProps> = ({
     };
   }, [config.mode, scrollConfig]);
 
-  // Mobile detection (from original component)
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
 
   return (
     <div
