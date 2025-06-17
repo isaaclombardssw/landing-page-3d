@@ -1,6 +1,4 @@
-import { AnimationConfig } from '../types';
-
-export const useStandaloneAnimation = (config: AnimationConfig) => {
+export const useStandaloneAnimation = () => {
   // TODO: Implement standalone animation logic
   // - Handle time-based animations
   // - Support different triggers (mount, visible, manual)
